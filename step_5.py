@@ -1,7 +1,8 @@
 import requests
 import datetime
 
-response = requests.post('http://challenge.code2040.org/api/dating', data = {'token':'38435f83ebfecb02e00892e83c22862f'})
+response = requests.post('http://challenge.code2040.org/api/dating',
+data = {'token':'38435f83ebfecb02e00892e83c22862f'})
 
 contents = response.json()
 seconds, date = contents['interval'], contents['datestamp']
@@ -22,4 +23,5 @@ time_elpased = datetime.timedelta(days, seconds_left)
 new_date = new_date + time_elpased
 result = new_date.isoformat() + 'Z'
 
-requests.post('http://challenge.code2040.org/api/dating/validate', data = {'token':'38435f83ebfecb02e00892e83c22862f', 'datestamp': result})
+requests.post('http://challenge.code2040.org/api/dating/validate',
+data = {'token':'38435f83ebfecb02e00892e83c22862f', 'datestamp': result})
